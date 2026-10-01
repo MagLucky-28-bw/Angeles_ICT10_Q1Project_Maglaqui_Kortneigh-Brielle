@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skewer Project</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.2.2/core.css">
+
+    <script type="module" src="https://pyscript.net/releases/2025.2.2/core.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff7d6;
+            color: #2b2b2b;
+            font-size: 17px;
+        }
+
+        header {
+            background-color: #ff8fab;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            border-bottom: 7px solid #ffd166;
+        }
+
+        h1 {
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            background-color: #6a4c93;
+            text-align: center;
+            padding: 12px;
+        }
+
+        nav button {
+            background-color: #ffffff;
+            color: #6a4c93;
+            border: 2px solid #ffffff;
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav button:hover {
+            background-color: #ffd166;
+            color: #2b2b2b;
+        }
+
+        .box {
+            background-color: white;
+            width: 82%;
+            max-width: 850px;
+            margin: 25px auto;
+            padding: 25px;
+            border-radius: 18px;
+            border: 3px dashed #6a4c93;
+            box-shadow: 8px 8px 0 #ffd166;
+        }
+
+        h2 {
+            color: #6a4c93;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 12px;
+        }
+
+        input, select {
+            width: 95%;
+            padding: 11px;
+            margin-top: 6px;
+            border: 2px solid #b8b8ff;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .main-btn {
+            background-color: #06d6a0;
+            border: none;
+            color: #073b4c;
+            font-weight: bold;
+            padding: 12px 20px;
+            margin-top: 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .main-btn:hover {
+            background-color: #ffd166;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #skuResult, #receiptResult {
+            margin-top: 20px;
+            background-color: #e0fbfc;
+            border-left: 8px solid #118ab2;
+            padding: 18px;
+            border-radius: 10px;
+        }
+
+        .menu-row {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin: 9px 0;
+            border-radius: 10px;
+            border: 1px solid #d6d6d6;
+        }
+
+        .menu-row input {
+            width: auto;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #6a4c93;
+            color: white;
+            padding: 15px;
+            margin-top: 35px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Skewer Student Project</h1>
+        <p>SKU Generator and Receipt Generator</p>
+    </header>
+
+    <nav>
+        <button py-click="show_sku">SKU Generator</button>
+        <button py-click="show_receipt">Receipt Generator</button>
+    </nav>
+
+    <div id="skuPage" class="box">
+        <h2>Funny Little SKU Maker</h2>
+        <p>This page creates a unique product code using the category, product name, and stock quantity.</p>
+
+        <label>Category</label>
+        <select id="category">
+            <option value="FOOD">Food</option>
+            <option value="DRINK">Drink</option>
+            <option value="SCHOOL">School Supply</option>
+            <option value="CLOTHES">Clothes</option>
+            <option value="OTHER">Other</option>
+        </select>
+
+        <label>Product Name</label>
+        <input id="productName" placeholder="Example: Mango Juice">
+
+        <label>Stock Quantity</label>
+        <input id="stockQty" type="number" placeholder="Example: 25">
+
+        <button class="main-btn" py-click="make_sku">Generate SKU</button>
+
+        <div id="skuResult">Your generated SKU will show here.</div>
+    </div>
+
+    <div id="receiptPage" class="box hidden">
+        <h2>Mini Receipt Generator</h2>
+        <p>Choose the items ordered by the customer, then click the button to create a receipt.</p>
+
+        <div class="menu-row"><input type="checkbox" id="item1"> Hotdog Skewer - ₱35</div>
+        <div class="menu-row"><input type="checkbox" id="item2"> Cheese Stick - ₱20</div>
+        <div class="menu-row"><input type="checkbox" id="item3"> Fried Siomai - ₱45</div>
+        <div class="menu-row"><input type="checkbox" id="item4"> Iced Tea - ₱25</div>
+        <div class="menu-row"><input type="checkbox" id="item5"> Nachos - ₱50</div>
+
+        <button class="main-btn" py-click="make_receipt">Create Receipt</button>
+        <button class="main-btn" py-click="clear_receipt">Clear</button>
+
+        <div id="receiptResult">Your receipt will show here.</div>
+    </div>
+
+    <script type="py" src="./index.py"></script>
+</body>
+
+</html>
